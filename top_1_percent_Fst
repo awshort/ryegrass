@@ -1,0 +1,122 @@
+#Read in Fst between S and R in genomic windows
+```{r}
+a1 <- na.omit(read.csv("Fst.w_100000.m100.ryegrass.csv"))
+n <- 1
+nrow(a1)*0.01
+```
+#Calculate top 1% of Fst windows between S and R
+```{r}
+a2 <- a1[a1$Fst_S_R > quantile(a1$Fst_S_R,prob=1-n/100),]
+nrow(a2)
+write.csv(a2, "top_1_percent_S_vs_R_Fst_w_10kb_100.csv")
+```
+#Calculate top 1% of Fst windows between S and R populations
+#GULF and L31
+```{r}
+b1 <- na.omit(read.csv("Fst.w_100000.m100.ryegrass_pops.csv"))
+n <- 1
+nrow(b1)*0.01
+b2 <- b1[b1$Fst_GULF_L31 > quantile(b1$Fst_GULF_L31,prob=1-n/100),]
+nrow(b2)
+write.csv(b2, "top_1_percent_GULF_vs_L31_Fst_w_10kb_100.csv")
+```
+#GULF and L60
+```{r}
+b3 <- b1[b1$Fst_GULF_L60 > quantile(b1$Fst_GULF_L60,prob=1-n/100),]
+nrow(b3)
+write.csv(b3, "top_1_percent_GULF_vs_L60_Fst_w_10kb_100.csv")
+```
+
+#GULF and PR
+```{r}
+b4 <- b1[b1$Fst_GULF_PR > quantile(b1$Fst_GULF_PR,prob=1-n/100),]
+nrow(b4)
+write.csv(b4, "top_1_percent_GULF_vs_PR_Fst_w_10kb_100.csv")
+```
+
+#L31 and L46
+```{r}
+b5 <- b1[b1$Fst_L31_L46 > quantile(b1$Fst_L31_L46,prob=1-n/100),]
+nrow(b5)
+write.csv(b5, "top_1_percent_L31_vs_L46_Fst_w_10kb_100.csv")
+```
+
+#L46 and L60
+```{r}
+b6 <- b1[b1$Fst_L46_L60 > quantile(b1$Fst_L46_L60,prob=1-n/100),]
+nrow(b6)
+write.csv(b6, "top_1_percent_L46_vs_L60_Fst_w_10kb_100.csv")
+```
+#L46 and Pr
+```{r}
+b7 <- b1[b1$Fst_L46_PR > quantile(b1$Fst_L46_PR,prob=1-n/100),]
+nrow(b7)
+write.csv(b7, "top_1_percent_L46_vs_PR_Fst_w_10kb_100.csv")
+```
+#L31 and SLB
+```{r}
+b8 <- b1[b1$Fst_L31_SLB > quantile(b1$Fst_L31_SLB,prob=1-n/100),]
+nrow(b8)
+write.csv(b8, "top_1_percent_L31_vs_SLB_Fst_w_10kb_100.csv")
+```
+#L60 and SLB
+```{r}
+b9 <- b1[b1$Fst_L60_SLB > quantile(b1$Fst_L60_SLB,prob=1-n/100),]
+nrow(b9)
+write.csv(b9, "top_1_percent_L60_vs_SLB_Fst_w_10kb_100.csv")
+```
+#Pr and SLB
+```{r}
+b10 <- b1[b1$Fst_PR_SLB > quantile(b1$Fst_PR_SLB,prob=1-n/100),]
+nrow(b10)
+write.csv(b10, "top_1_percent_PR_vs_SLB_Fst_w_10kb_100.csv")
+```
+
+#Load library
+library(UpSetR)
+
+#Get list of windows for all Fst comparisons
+a3 <- a2[,1:3]
+head(a3)
+b2_1 <- b2[,1:3]
+head(b2_1)
+b3_1 <- b3[,1:3]
+head(b3_1)
+b4_1 <- b4[,1:3]
+head(b4_1)
+b5_1 <- b5[,1:3]
+head(b5_1)
+b6_1 <- b6[,1:3]
+head(b6_1)
+b7_1 <- b7[,1:3]
+head(b7_1)
+b8_1 <- b8[,1:3]
+head(b8_1)
+b9_1 <- b9[,1:3]
+head(b9_1)
+b10_1 <- b10[,1:3]
+head(b10_1)
+
+#Idenitfy windows in the top 1 percent for all comparisons
+a4 <- intersect(a3,b2_1)
+a5 <- intersect(a4,b3_1)
+a6 <- intersect(a5,b4_1)
+a7 <- intersect(a6,b5_1)
+a8 <- intersect(a7,b6_1)
+a9 <- intersect(a8,b7_1)
+a10 <- intersect(a9,b8_1)
+a11 <- intersect(a10,b9_1)
+a12 <- intersect(a11,b10_1)
+write.csv(a12, "top_1_percent_common_all_comparisons_Fst_w_10kb_m_100.csv")
+
+
+#Idenitfy windows in the top 1 percent for all between population comparisons
+a5 <- intersect(b2_1,b3_1)
+a6 <- intersect(a5,b4_1)
+a7 <- intersect(a6,b5_1)
+a8 <- intersect(a7,b6_1)
+a9 <- intersect(a8,b7_1)
+a10 <- intersect(a9,b8_1)
+a11 <- intersect(a10,b9_1)
+a12 <- intersect(a11,b10_1)
+write.csv(a12, "top_1_percent_common_all_pop_comparisons_Fst_w_10kb_m_100.csv")
