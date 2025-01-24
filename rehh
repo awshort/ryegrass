@@ -1,0 +1,237 @@
+#Load packages
+library(rehh)
+library(vcfR)
+#read in VCF files
+hh <- data2haplohh(hap_file = "s.5_RagTag.no_indels.maf_0.05.biallelic.phased.output_merged_new_ID_miss075_dp10.recode.vcf", vcf_reader = "vcfR", polarize_vcf = FALSE)
+hh1 <- data2haplohh(hap_file = "r.5_RagTag.no_indels.maf_0.05.biallelic.phased.output_merged_new_ID_miss075_dp10.recode.vcf", vcf_reader = "vcfR", polarize_vcf = FALSE)
+#Calculate EHH for SNP at position 160,402,192
+res <- calc_ehhs(hh, mrk = c(45823-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res
+res1 <- calc_ehhs(hh1, mrk = c(45823-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1
+#Output plot of EHH to SVG file
+library(svglite)
+svg("EHHs_5_RagTag_160402192.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, main="EHHS 5_RagTag_160402192 (s)", col="red", ylab="EHHS", xlim=c(160385000,160411000))
+plot(res1, main="EHHS 5_RagTag_160402192 (r)", col="blue", ylab="EHHS", xlim=c(160385000,160411000))
+dev.off()
+
+#Calculate EHH for SNP at position 160,178,236
+res <- calc_ehhs(hh, mrk = c(45445-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res
+res1 <- calc_ehhs(hh1, mrk = c(45445-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1
+
+#Output plot of EHH to SVG file
+library(svglite)
+svg("EHHs_5_RagTag_160178236.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, main="EHHS 5_RagTag_160178236 (s)", col="red", ylab="EHHS", xlim=c(160177200,160182700))
+plot(res1, main="EHHS 5_RagTag_160178236 (r)", col="blue", ylab="EHHS", xlim=c(160177200,160182700))
+dev.off()
+
+#Calculate EHH for SNP at position 160178456
+res <- calc_ehhs(hh, mrk = c(107907-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(107907-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+
+library(svglite)
+svg("EHHs_5_RagTag_160178456.svg", width=10)
+#pdf("EHHs_5_RagTag_160178456.pdf", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, main="EHHS 5_RagTag_160178456 (s)", col="red", ylab="EHHS", xlim=c(160178000,160181000))
+plot(res1, main="EHHS 5_RagTag_160178456 (r)", col="blue", ylab="EHHS", xlim=c(160178000,160181000))
+dev.off()
+
+
+#Calculate EHH for SNP at position 160402192
+res <- calc_ehhs(hh, mrk = c(120617-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(120617-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+
+library(svglite)
+svg("EHHs_5_RagTag_160402192.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, main="EHHS 5_RagTag_160402192 (s)", col="red", ylab="EHHS", xlim=c(160385000,160405000))
+plot(res1, main="EHHS 5_RagTag_160402192 (r)", col="blue", ylab="EHHS", xlim=c(160385000,160405000))
+dev.off()
+
+#Calculate EHH for SNP at position 160400974
+res <- calc_ehhs(hh, mrk = c(120593-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(120593-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_160400974.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, main="EHHS 5_RagTag_160400974 (s)", col="red", ylab="EHHS", xlim=c(160385000,160405000))
+plot(res1, main="EHHS 5_RagTag_160400974 (r)", col="blue", ylab="EHHS", xlim=c(160385000,160405000))
+dev.off()
+
+#Calculate EHH for SNP at position 160315447
+res <- calc_ehhs(hh, mrk = c(120342-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(120342-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_160315447.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, main="EHHS 5_RagTag_160315447 (s)", col="red", ylab="EHHS")
+plot(res1, main="EHHS 5_RagTag_160315447 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100423860
+res <- calc_ehhs(hh, mrk = c(135367-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(135367-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100423860.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100423400,100424600), main="EHHS 5_RagTag_100423860 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100423400,100424600), main="EHHS 5_RagTag_100423860 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100213640
+res <- calc_ehhs(hh, mrk = c(132768-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(132768-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100213640.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100213000,100214000), main="EHHS 5_RagTag_100213640 (s)", col="red")
+plot(res1, xlim=c(100213000,100214000), main="EHHS 5_RagTag_100213640 (r)", col="blue")
+dev.off()
+
+#Calculate EHH for SNP at position 100421905
+res <- calc_ehhs(hh, mrk = c(135111-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(135111-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100421905.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100421000,100423000), main="EHHS 5_RagTag_100421905 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100421000,100423000), main="EHHS 5_RagTag_100421905 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 162257267
+res <- calc_ehhs(hh, mrk = c(170554-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(170554-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_162257267.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(162250000,162270000), main="EHHS 5_RagTag_162257267 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(162250000,162270000), main="EHHS 5_RagTag_162257267 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 159409415
+res <- calc_ehhs(hh, mrk = c(161025-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(161025-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_159409415.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(159409300,159409700), main="EHHS 5_RagTag_159409415 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(159409300,159409700), main="EHHS 5_RagTag_159409415 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100213501
+res <- calc_ehhs(hh, mrk = c(132761-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(132761-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100213501.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100211000,100216000), main="EHHS 5_RagTag_100213501 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100211000,100216000), main="EHHS 5_RagTag_100213501 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100183991
+res <- calc_ehhs(hh, mrk = c(132682-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(132682-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100183991.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100180000,100205000), main="EHHS 5_RagTag_100183991 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100180000,100205000), main="EHHS 5_RagTag_100183991 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100220340
+res <- calc_ehhs(hh, mrk = c(133125-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(133125-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100220340.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100218000,100221000), main="EHHS 5_RagTag_100220340 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100218000,100221000), main="EHHS 5_RagTag_100220340 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100421387
+res <- calc_ehhs(hh, mrk = c(135076-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(135076-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100421387.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100420500,100422000), main="EHHS 5_RagTag_100421387 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100420500,100422000), main="EHHS 5_RagTag_100421387 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 163368026
+res <- calc_ehhs(hh, mrk = c(174030-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(174030-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_163368026.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(163100000,163600000), main="EHHS 5_RagTag_163368026 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(163100000,163600000), main="EHHS 5_RagTag_163368026 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 162354692
+res <- calc_ehhs(hh, mrk = c(171222-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(171222-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_162354692.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(162348000,162360000), main="EHHS 5_RagTag_162354692 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(162348000,162360000), main="EHHS 5_RagTag_162354692 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 165297925
+res <- calc_ehhs(hh, mrk = c(177587-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(177587-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_165297925.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(165285000,165310000), main="EHHS 5_RagTag_165297925 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(165285000,165310000), main="EHHS 5_RagTag_165297925 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+#Calculate EHH for SNP at position 100267625
+res <- calc_ehhs(hh, mrk = c(133313-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(133313-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_100267625.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(100260000,100271500), main="EHHS 5_RagTag_100267625 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(100260000,100271500), main="EHHS 5_RagTag_100267625 (r)", col="blue", ylab="EHHS")
+dev.off()
+
+
+#Calculate EHH for SNP at position 165297688
+res <- calc_ehhs(hh, mrk = c(177549-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(177549-169), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+library(svglite)
+svg("EHHs_5_RagTag_165297688.svg", width=10)
+par(mfrow = c(2, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(res, xlim=c(165295000,165300000), main="EHHS 5_RagTag_165297688 (s)", col="red", ylab="EHHS")
+plot(res1, xlim=c(165295000,165300000), main="EHHS 5_RagTag_165297688 (r)", col="blue", ylab="EHHS")
+dev.off()
