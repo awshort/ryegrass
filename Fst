@@ -1,0 +1,156 @@
+#Read in files with Fst between susceptible and resistant for each chromosome
+```{r}
+rye_fst_1 <- read.csv("1_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_1 <- subset(rye_fst_1, rye_fst_1$WEIR_AND_COCKERHAM_FST > (0))
+rye_fst_2 <- read.csv("2_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_2 <- subset(rye_fst_2, rye_fst_2$WEIR_AND_COCKERHAM_FST > (0))
+rye_fst_3 <- read.csv("3_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_3 <- subset(rye_fst_3, rye_fst_3$WEIR_AND_COCKERHAM_FST > (0))
+rye_fst_4 <- read.csv("4_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_4 <- subset(rye_fst_4, rye_fst_4$WEIR_AND_COCKERHAM_FST > (0))
+rye_fst_5 <- read.csv("5_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_5 <- subset(rye_fst_5, rye_fst_5$WEIR_AND_COCKERHAM_FST > (0))
+rye_fst_6 <- read.csv("6_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_6 <- subset(rye_fst_6, rye_fst_6$WEIR_AND_COCKERHAM_FST > (0))
+rye_fst_7 <- read.csv("7_RagTag.no_indels.maf_0.005.biallelic.fst.ryegrass_s_r", sep="\t")
+rye_fst_7 <- subset(rye_fst_7, rye_fst_7$WEIR_AND_COCKERHAM_FST > (0))
+
+rye_fst <- rbind(rye_fst_1,rye_fst_2,rye_fst_3,rye_fst_4,rye_fst_5,rye_fst_6,rye_fst_7)
+head(rye_fst)
+```
+#Plot Fst
+```{r}
+library(svglite)
+jpeg("Ryegrass.Fst.jpeg", width=2000, height=3500)
+par(mfrow = c(7, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(rye_fst_1$POS, rye_fst_1$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 1", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+plot(rye_fst_2$POS, rye_fst_2$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 2", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+plot(rye_fst_3$POS, rye_fst_3$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 3", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+plot(rye_fst_4$POS, rye_fst_4$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 4", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+plot(rye_fst_5$POS, rye_fst_5$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 5", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+plot(rye_fst_6$POS, rye_fst_6$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 6", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+plot(rye_fst_7$POS, rye_fst_7$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 7", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0))
+dev.off()
+```
+
+#Plot Fst on ragtag 5
+```{r}
+#svglite("5_RagTag.Fst.svg", width=28)
+jpeg("Chrom_5.Ryegrass.Fst.color.jpeg", width=2000, height=500)
+par(mfrow = c(1, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+plot(rye_fst_5$POS, rye_fst_5$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 5", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0),col=color.gradient(rye_fst_5$WEIR_AND_COCKERHAM_FST))
+dev.off()
+```
+
+#Plot Fst on region of ragtag 5 (between 156000000 and 168000000)
+```{r}
+#svglite("5_RagTag.Fst.svg", width=28)
+
+pdf("156000000_168000000.Chrom_5.Ryegrass.Fst.color.pdf", width=20, height=7)
+
+par(mfrow = c(1, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+
+plot(rye_fst_5$POS, rye_fst_5$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 5", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0), xlim=c(156000000,168000000),col=color.gradient(rye_fst_5$WEIR_AND_COCKERHAM_FST))
+
+dev.off()
+```
+#Plot Fst on region of ragtag 5 (between 157000000 and 167000000)
+```{r}
+pdf("157000000_167000000.Chrom_5.Ryegrass.Fst.color.pdf", width=20, height=7)
+
+par(mfrow = c(1, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+
+plot(rye_fst_5$POS, rye_fst_5$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 5", ylab=expression(F[st]),pch=20,cex=1.0, cex.lab=2, cex.axis=1.5, ylim=c(0.000,1.0), xlim=c(157000000,167000000),col=color.gradient(rye_fst_5$WEIR_AND_COCKERHAM_FST))
+
+dev.off()
+```
+
+#Plot Fst in the region between 100180000 and 170000000 on chromosome 5
+```{r}
+library(svglite)
+svglite("5_RagTag.Fst.zoomed_in.svg", width=28)
+
+par(mfrow = c(1, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+
+plot(rye_fst$POS, rye_fst$WEIR_AND_COCKERHAM_FST, xlab="Chromosome 5", ylab="Fst", xlim=c(100180000,170000000),pch=20)
+abline(v=100183991, col="red", lty=2)
+abline(v=100213501, col="red", lty=2)
+abline(v=100213640, col="red", lty=2)
+abline(v=100220340, col="red", lty=2)
+abline(v=100269722, col="red", lty=2)
+abline(v=100421387, col="red", lty=2)
+abline(v=100421905, col="red", lty=2)
+abline(v=159409415, col="red", lty=2)
+abline(v=162257267, col="red", lty=2)
+abline(v=162354692, col="red", lty=2)
+abline(v=163368026, col="red", lty=2)
+abline(v=165297925, col="red", lty=2)
+dev.off()
+```
+#Plot Fst in the region between 100180000 and 100500000 on chromosome 5
+```{r}
+library(svglite)
+svglite("5_RagTag.Fst.zoomed_in_1.svg", width=28)
+
+par(mfrow = c(1, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+
+plot(rye_fst$POS, rye_fst$WEIR_AND_COCKERHAM_FST,xlab="Chromosome 5", ylab="Fst", xlim=c(100180000,100500000),pch=20)
+abline(v=100183991, col="red", lty=2)
+abline(v=100213501, col="red", lty=2)
+abline(v=100213640, col="red", lty=2)
+abline(v=100220340, col="red", lty=2)
+abline(v=100269722, col="red", lty=2)
+abline(v=100421387, col="red", lty=2)
+abline(v=100421905, col="red", lty=2)
+abline(v=159409415, col="red", lty=2)
+abline(v=162257267, col="red", lty=2)
+abline(v=162354692, col="red", lty=2)
+abline(v=163368026, col="red", lty=2)
+abline(v=165297925, col="red", lty=2)
+dev.off()
+```
+#Plot Fst in the region between 159300000 and 165400000 on chromosome 5
+```{r}
+library(svglite)
+svglite("5_RagTag.Fst.zoomed_in_2.svg", width=28)
+
+par(mfrow = c(1, 1)) ## set number of plots to produce on the same page, in c(nrows,ncolumns)
+
+par(mar=c(5,5,1.5,1.5)) ###plot margins -- if you always include this, then all plots will have the same dimensions.
+
+plot(rye_fst$POS, rye_fst$WEIR_AND_COCKERHAM_FST,xlab="Chromosome 5", ylab="Fst", xlim=c(159300000,165400000),pch=20)
+abline(v=100183991, col="red", lty=2)
+abline(v=100213501, col="red", lty=2)
+abline(v=100213640, col="red", lty=2)
+abline(v=100220340, col="red", lty=2)
+abline(v=100269722, col="red", lty=2)
+abline(v=100421387, col="red", lty=2)
+abline(v=100421905, col="red", lty=2)
+abline(v=159409415, col="red", lty=2)
+abline(v=162257267, col="red", lty=2)
+abline(v=162354692, col="red", lty=2)
+abline(v=163368026, col="red", lty=2)
+abline(v=165297925, col="red", lty=2)
+dev.off()
+```
+
+#Plot Fst using ggplot2
+```{r}
+rye_fst<-rbind(rye_fst_1,rye_fst_2,rye_fst_3,rye_fst_4,rye_fst_5,rye_fst_6,rye_fst_7)
+library(ggplot2)
+levels(rye_fst$CHROM)
+jpeg("Ryegrass.Fst.2.jpeg", width=2000, height=3500)
+ggplot(rye_fst, aes(x=POS, y=WEIR_AND_COCKERHAM_FST))+ geom_point() + facet_grid(CHROM ~ ., scales = "free_x")+theme_bw()
+dev.off()
+```
+
