@@ -1,0 +1,2 @@
+#Phasing VCF using beagle
+java -Xmx12g -jar /projects/streisfeld/mchase2/genome_reseq/scripts/beagle.08Jun17.d8b.jar gt=output_merged_new_ID_miss075_dp10.vcf.gz out=phased.output_merged_new_ID_miss075_dp10 impute=true nthreads=28 window=100000 overlap=10000 gprobs=false
