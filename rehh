@@ -2,13 +2,11 @@
 library(rehh)
 library(vcfR)
 #read in VCF files
-hh <- data2haplohh(hap_file = "s.5_RagTag.no_indels.maf_0.05.biallelic.phased.output_merged_new_ID_miss075_dp10.recode.vcf", vcf_reader = "vcfR", polarize_vcf = FALSE)
-hh1 <- data2haplohh(hap_file = "r.5_RagTag.no_indels.maf_0.05.biallelic.phased.output_merged_new_ID_miss075_dp10.recode.vcf", vcf_reader = "vcfR", polarize_vcf = FALSE)
+hh <- data2haplohh(hap_file = "s.5_RagTag.no_indels.maf_0.005.biallelic.phased.output_merged_new_ID_miss075_dp10.recode.vcf", vcf_reader = "vcfR", polarize_vcf = FALSE)
+hh1 <- data2haplohh(hap_file = "r.5_RagTag.no_indels.maf_0.005.biallelic.phased.output_merged_new_ID_miss075_dp10.recode.vcf", vcf_reader = "vcfR", polarize_vcf = FALSE)
 #Calculate EHH for SNP at position 160,402,192
-res <- calc_ehhs(hh, mrk = c(45823-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
-res
-res1 <- calc_ehhs(hh1, mrk = c(45823-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
-res1
+res <- calc_ehhs(hh, mrk = c(108853-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(108853-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
 #Output plot of EHH to SVG file
 library(svglite)
 svg("EHHs_5_RagTag_160402192.svg", width=10)
@@ -19,9 +17,9 @@ plot(res1, main="EHHS 5_RagTag_160402192 (r)", col="blue", ylab="EHHS", xlim=c(1
 dev.off()
 
 #Calculate EHH for SNP at position 160,178,236
-res <- calc_ehhs(hh, mrk = c(45445-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res <- calc_ehhs(hh, mrk = c(107899-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
 res
-res1 <- calc_ehhs(hh1, mrk = c(45445-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
+res1 <- calc_ehhs(hh1, mrk = c(107899-170), include_nhaplo = TRUE, discard_integration_at_border = FALSE)
 res1
 
 #Output plot of EHH to SVG file
